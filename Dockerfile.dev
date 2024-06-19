@@ -1,0 +1,19 @@
+FROM golang:1.22 AS builder
+
+WORKDIR /app
+COPY go.mod /app
+COPY go.sum /app
+
+RUN go mod download
+
+COPY . .
+RUN make build
+
+FROM alpine:3.18
+WORKDIR /app
+
+RUN apk add --no-cache curl
+COPY --from=builder /app/vmd .
+COPY --from=builder /app/config-dev.toml ./config.toml
+ENV TZ Asia/Seoul
+CMD ["./vmd"]

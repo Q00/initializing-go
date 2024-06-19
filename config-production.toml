@@ -1,0 +1,6 @@
+[context]
+timeout = 2
+
+[server]
+port = 9090
+address = "0.0.0.0"

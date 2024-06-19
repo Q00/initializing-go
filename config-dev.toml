@@ -1,0 +1,15 @@
+[context]
+timeout = 2
+
+[server]
+port = 9090
+address = "0.0.0.0"
+
+[DB]
+hostname = ""
+port = 3306
+dbname = ""
+username = ""
+password = ""
+maxOpenConns = 20
+maxIdleConns = 10
